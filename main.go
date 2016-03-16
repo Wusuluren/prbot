@@ -104,7 +104,7 @@ func main() {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			abbr := fmt.Sprintf("%s/%.7s", *te.Path, *te.SHA)
+			abbr := fmt.Sprintf("%s %.7s", *te.Path, *te.SHA)
 
 			in, err := rawBlob(gh, owner, repo, *te.SHA)
 			if err != nil {
@@ -171,7 +171,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Creating branch: %v", err)
 	}
-	log.Printf("Branch: %v", ref)
+	//log.Printf("Branch: %v", ref)
 	log.Printf("Branch URL: %s/tree/%s", *fork.HTMLURL, prBranch)
 
 	log.Printf("Creating pull request ...")
